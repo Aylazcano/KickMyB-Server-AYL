@@ -179,5 +179,32 @@ public class ServiceTaskImpl implements ServiceTask {
 
         return response;
     }
+    @Override
+    public void deleteOne(long TaskId,MUser user){
+        MTask t=repo.findById(TaskId).get();
+        //MTask t=user.tasks.get((int)TaskId);
+        user.tasks.remove(t);
+        //user.tasks.remove(i);
+        repoUser.save(user);
+        repo.delete(t);
+        /*for (int i=user.tasks.size()-1;i>=0 ;i--){
+            if(user.tasks.get(i).id==t.id){
+                MTask t2=user.tasks.get(i);
+                user.tasks.remove(i);
+                //repoUser.save(user);
+                MUser t3=repoUser.findById(user.id).get();
 
+                for (int b=t2.events.size()-1;i>=0 ;i--){
+                    //repoProgressEvent.delete(t2.events.get(b));
+                }
+
+                repo.deleteById(t2.id);
+            }
+        }*/
+        //user.tasks.remove(t);
+        //repoUser.save(user);
+        // repo.delete(t);
+
+        // repoUser.save(user);
+    }
 }
