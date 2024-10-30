@@ -27,5 +27,11 @@ public class MTask {
 
     @OneToOne
     public MPhoto photo;
-
+    @Override
+    public boolean equals(Object obj) {
+        if(obj.getClass() != MTask.class) {
+            return false;
+        }
+        return ((MTask) obj).id.equals(id);
+    }
 }
