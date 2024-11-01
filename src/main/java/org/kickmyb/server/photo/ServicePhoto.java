@@ -59,4 +59,13 @@ public class ServicePhoto {
     public MPhoto getFile(Long elementID) {
         return repoPics.findById(elementID).get();
     }
+
+    @Transactional
+    public void deletePhoto(MTask task) {
+        repoPics.findByTask(task).ifPresent(photo -> {
+            // Supprimer la photo de la base de données
+            repoPics.delete(photo);
+        });
+    }
+
 }
