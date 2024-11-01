@@ -185,8 +185,10 @@ public class ServiceTaskImpl implements ServiceTask {
     @Override
     public void deleteOne(long TaskId,MUser user){
         MTask t=repo.findById(TaskId).get();
+        //if(t.photo!=null){
+            servicePhoto.deletePhoto(t);
+        //}
 
-        servicePhoto.deletePhoto(t);
 
         user.tasks.remove(t);
 

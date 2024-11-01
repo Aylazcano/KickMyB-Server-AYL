@@ -37,6 +37,7 @@ public class ControllerAccount {
     public @ResponseBody SigninResponse signin(@RequestBody SigninRequest s) throws BadCredentialsException {
         System.out.println("ID : SIGNIN request " + s);
         ConfigHTTP.attenteArticifielle();
+
         s.username = s.username.trim().toLowerCase();
         try {
             Authentication auth = new UsernamePasswordAuthenticationToken(s.username, s.password);
